@@ -2,49 +2,36 @@ import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 
+const useInput = (
+  initialValue: string,
+  validator: (value: string) => boolean
+) => {
+  const [value, setValue] = useState(initialValue);
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const {
+      target: { value },
+    } = event;
+
+    let willUpdate = true;
+    if (typeof validator === "function") {
+      willUpdate = validator(value);
+    }
+    if (willUpdate) {
+      setValue(value);
+    }
+  };
+  return { value, onChange };
+};
+
 const App = () => {
-  const [item, setItem] = useState<number>(1);
-  const upItem = () => setItem(item + 1);
-  const downItem = () => setItem(item - 1);
+  const maxLen = (value: string) => !value.includes("#");
+  const name = useInput("Mr. ", maxLen);
   return (
-    <div>
-      <div>{item}</div>
-      <button onClick={upItem}>UP</button>
-      <button onClick={downItem}>DOWN</button>
+    <div className="App">
+      <h1>asdas</h1>
+      <input placeholder="Name" {...name} />
     </div>
   );
 };
-
-class AppUgly extends React.Component<{}, { item: number }> {
-  state = {
-    item: 1,
-  };
-
-  render() {
-    const { item } = this.state;
-    return (
-      <div>
-        <div>{item}</div>
-        <button onClick={this.upItem}>UP</button>
-        <button onClick={this.downItem}>DOWN</button>
-      </div>
-    );
-  }
-
-  upItem = () => {
-    this.setState((state) => {
-      return {
-        item: state.item + 1,
-      };
-    });
-  };
-  downItem = () => {
-    this.setState((state) => {
-      return {
-        item: state.item - 1,
-      };
-    });
-  };
-}
 
 export default App;
