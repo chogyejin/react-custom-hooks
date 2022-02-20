@@ -6,30 +6,31 @@ const useInput = (
   initialValue: string,
   validator: (value: string) => boolean
 ) => {
+  const placeholder = "Name";
   const [value, setValue] = useState(initialValue);
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const {
       target: { value },
-    } = event;
+    } = event; // value = event.target.value
 
-    let willUpdate = true;
-    if (typeof validator === "function") {
-      willUpdate = validator(value);
-    }
+    let willUpdate = false;
+    willUpdate = validator(value);
+
     if (willUpdate) {
       setValue(value);
     }
   };
-  return { value, onChange };
+
+  return { placeholder, value, onChange };
 };
 
 const App = () => {
-  const maxLen = (value: string) => !value.includes("#");
+  const maxLen = (value: string) => value.length <= 10;
   const name = useInput("Mr. ", maxLen);
   return (
     <div className="App">
       <h1>asdas</h1>
-      <input placeholder="Name" {...name} />
+      <input {...name} />
     </div>
   );
 };
