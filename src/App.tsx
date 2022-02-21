@@ -1,28 +1,5 @@
-import React, { useState } from "react";
-import logo from "./logo.svg";
 import "./App.css";
-
-const useInput = (
-  initialValue: string,
-  validator: (value: string) => boolean
-) => {
-  const placeholder = "Name";
-  const [value, setValue] = useState(initialValue);
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const {
-      target: { value },
-    } = event; // value = event.target.value
-
-    let willUpdate = false;
-    willUpdate = validator(value);
-
-    if (willUpdate) {
-      setValue(value);
-    }
-  };
-
-  return { placeholder, value, onChange };
-};
+import { useInput } from "./hooks/useInput";
 
 const App = () => {
   const maxLen = (value: string) => value.length <= 10;
