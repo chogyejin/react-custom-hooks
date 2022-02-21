@@ -36,3 +36,12 @@
   - validator에 따라 willUpdate 변경
   - maxLen 함수는 value의 길이에 따라 boolean 반환
   - 특정 문자 들어갔을 때 업데이트 안 되게 하려면 maxLen return을 `!value.includes("#")`
+
+# useTabs
+
+- 버튼에 따라 현재 section의 내용을 보여줌
+  - `<div>{currentItem.content}</div>`
+  - 버튼은 content 배열을 map() 하며 생기고 index도 갖고 있음
+- useTabs hook은 배열에서 현재 누른 탭 object(currentItem, changeItem) return
+  - currentItem : `{tab: "...", content: "..."}` 가진 object
+  - changeItem : 해당 section의 index로 변경하는 set function
