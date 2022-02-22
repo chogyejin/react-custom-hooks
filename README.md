@@ -65,7 +65,7 @@
 - 문서 제목을 업데이트해주는 hook, 제목을 업데이트해주는 setTitle return
 - componentDidmount, componentDidUpdate(title 변경 시)
 
-# useClick
+# useClick(useHover)
 
 - element를 클릭했을 때 어떤 함수 실행
 - component가 mount되면 useEffect로 event를 추가하지만 unmount될 때 event를 지워야함

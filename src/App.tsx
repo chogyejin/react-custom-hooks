@@ -1,12 +1,21 @@
-import { useClick } from "./hooks/useClick";
+import { useState } from "react";
+import { useHover } from "./hooks/useHover";
 
 const App = () => {
-  const sayHello = () => console.log("say Hello");
-  const title = useClick(sayHello);
+  const [num, setNum] = useState<number>(0);
+  const upCount = () => {
+    setNum(num + 1);
+  };
+  const ref = useHover(upCount);
+
   return (
     <div>
-      {/* ref 마우스 올려서 type 확인 */}
-      <h1 ref={title}>Hi</h1>
+      <div
+        ref={ref}
+        style={{ backgroundColor: "red", width: "100px", height: "100px" }}
+      >
+        {num}
+      </div>
     </div>
   );
 };
