@@ -1,21 +1,12 @@
-import { useState } from "react";
-import { useHover } from "./hooks/useHover";
+import { useConfirm } from "./hooks/useConfirm";
 
 const App = () => {
-  const [num, setNum] = useState<number>(0);
-  const upCount = () => {
-    setNum(num + 1);
-  };
-  const ref = useHover(upCount);
-
+  const deleteWorld = () => console.log("Delete World"); // 확인 callback
+  const abort = () => console.log("Aborted"); // 취소 callback
+  const confirmDelete = useConfirm("Are you sure?", deleteWorld, abort);
   return (
     <div>
-      <div
-        ref={ref}
-        style={{ backgroundColor: "red", width: "100px", height: "100px" }}
-      >
-        {num}
-      </div>
+      <button onClick={confirmDelete}>삭제</button>
     </div>
   );
 };
