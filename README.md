@@ -70,3 +70,13 @@
 - element를 클릭했을 때 어떤 함수 실행
 - component가 mount되면 useEffect로 event를 추가하지만 unmount될 때 event를 지워야함
   - componentWillUnmount의 역할은 useEffect 안에 함수를 return하게 작성
+
+# useConfirm
+
+- 사용자가 어떤 행동을 하기 전에 확인, 버튼을 클릭하면 이벤트 실행 전에 메세지 보여줌
+
+# usePreventLeave
+
+- 사용자가 페이지를 닫기 전 확인
+- 보호 버튼을 누르면 이벤트를 추가하여 창이 닫히기 전(beforeunload)에 function(listener)를 실행함
+- enableProtect, disableProject 함수를 반환하고 이를 버튼의 onClick에 전달
