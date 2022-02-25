@@ -1,11 +1,12 @@
-import { useBeforeLeave } from "./hooks/useBeforeLeave";
+import { useFadeIn } from "./hooks/useFadeIn";
 
 const App = () => {
-  const sayStay = () => console.log("Plz stay");
-  useBeforeLeave(sayStay);
+  const fadeInDiv = useFadeIn(1, 2); // 1초 동안 서서히 2초 뒤에
+  const fadeInP = useFadeIn(5, 10); // 5초 동안 서서히 10초 뒤에
   return (
     <div>
-      <h1>Hi</h1>
+      <div {...fadeInDiv}>Hi</div>
+      <p {...fadeInP}>안녕 안녕 안녕</p>
     </div>
   );
 };
