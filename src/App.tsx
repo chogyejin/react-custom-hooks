@@ -1,11 +1,11 @@
-import { usePreventLeave } from "./hooks/usePreventLeave";
+import { useBeforeLeave } from "./hooks/useBeforeLeave";
 
 const App = () => {
-  const { enableProtect, disableProtect } = usePreventLeave();
+  const sayStay = () => console.log("Plz stay");
+  useBeforeLeave(sayStay);
   return (
     <div>
-      <button onClick={enableProtect}>보호</button>
-      <button onClick={disableProtect}>보호X</button>
+      <h1>Hi</h1>
     </div>
   );
 };
