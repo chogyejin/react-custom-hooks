@@ -88,3 +88,10 @@
 - 떠나려하는 것은 document에서 위쪽으로 마우스를 향했을 때임(아래, 옆쪽 leave는 event 발생하면 안됨)
   - hook에서 사용되는 handle 함수의 event를 찍으면 clientY가 있음
   - clientY가 음수일 때만 실행되게 작성
+
+# useFadeIn
+
+- duration과 delay를 받아 태그의 transition 속성을 조정하는 hook
+  - `current.style.transition`은 transition-property, transition-duration, transition-timing-function, transition-delay의 축약
+  - HTML 태그에서 spread로 사용할 수 있는 ref와 style을 가지고 있는 object 리턴
+    - `ref={element} style={{ opacity: 0 }}`와 같은 역할
