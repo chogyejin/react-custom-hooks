@@ -80,3 +80,11 @@
 - 사용자가 페이지를 닫기 전 확인
 - 보호 버튼을 누르면 이벤트를 추가하여 창이 닫히기 전(beforeunload)에 function(listener)를 실행함
 - enableProtect, disableProject 함수를 반환하고 이를 버튼의 onClick에 전달
+
+# useBeforeLeave
+
+- 사용자가 document에서 벗어날 때(mouseleave) 실행되는 hook
+  - mouseleave, mouseenter는 자기에만 반응, mouseout, mouseover는 직접 걸지 않은 자식 요소에서도 반응하는 event
+- 떠나려하는 것은 document에서 위쪽으로 마우스를 향했을 때임(아래, 옆쪽 leave는 event 발생하면 안됨)
+  - hook에서 사용되는 handle 함수의 event를 찍으면 clientY가 있음
+  - clientY가 음수일 때만 실행되게 작성
