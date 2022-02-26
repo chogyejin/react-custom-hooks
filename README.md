@@ -95,3 +95,13 @@
   - `current.style.transition`은 transition-property, transition-duration, transition-timing-function, transition-delay의 축약
   - HTML 태그에서 spread로 사용할 수 있는 ref와 style을 가지고 있는 object 리턴
     - `ref={element} style={{ opacity: 0 }}`와 같은 역할
+
+# useNetwork
+
+- network의 상태(online, offline)가 바뀔 때마다 function 호출
+  - Network 상태인 status(setStatus)를 return하고 console.log를 찍음(onChange)
+- status는 초기 값으로 현재 Network 상태를 가지고 있음
+  - navigator.onLine 은 browser의 status(boolean)를 return
+- 개발자 도구 > Network > Presets > Offline 으로 오프라인 세팅
+  - online은 No throttling, Fast 3G, Slow 3G
+- online, offline 이벤트에 따라 handleChange 함수 실행
