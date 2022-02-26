@@ -1,13 +1,18 @@
-import { useNetwork } from "./hooks/useNetwork";
+import { useScroll } from "./hooks/useScroll";
 
 const App = () => {
-  const handleNetworkChange = (online: boolean) => {
-    console.log(online ? "Go to Online" : "Go to Offline");
-  };
-  const online = useNetwork(handleNetworkChange);
+  const { x, y } = useScroll();
   return (
-    <div>
-      <h1>{online ? "Online" : "Offline"}</h1>
+    <div style={{ height: "1000vh", width: "1000vw" }}>
+      <h1
+        style={{
+          position: "fixed",
+          color: y > 100 ? "red" : "blue",
+          fontSize: x > 100 ? "100px" : "",
+        }}
+      >
+        Hi
+      </h1>
     </div>
   );
 };
