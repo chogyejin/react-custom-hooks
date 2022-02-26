@@ -105,3 +105,9 @@
 - 개발자 도구 > Network > Presets > Offline 으로 오프라인 세팅
   - online은 No throttling, Fast 3G, Slow 3G
 - online, offline 이벤트에 따라 handleChange 함수 실행
+
+# useScroll
+
+- scroll에 따라 태그의 글자색, 크기 변경하는 hook
+- event handler의 event type은 Type Definition에서 lib.dom.d.ts의 GlobalEventHandlersEventMap을 참고
+- window.scrollX, window.scrollY는 수평, 수직으로 얼마나 scroll 됐는지 보여줌
