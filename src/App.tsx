@@ -1,12 +1,13 @@
-import { useFadeIn } from "./hooks/useFadeIn";
+import { useNetwork } from "./hooks/useNetwork";
 
 const App = () => {
-  const fadeInDiv = useFadeIn(1, 2); // 1초 동안 서서히 2초 뒤에
-  const fadeInP = useFadeIn(5, 10); // 5초 동안 서서히 10초 뒤에
+  const handleNetworkChange = (online: boolean) => {
+    console.log(online ? "Go to Online" : "Go to Offline");
+  };
+  const online = useNetwork(handleNetworkChange);
   return (
     <div>
-      <div {...fadeInDiv}>Hi</div>
-      <p {...fadeInP}>안녕 안녕 안녕</p>
+      <h1>{online ? "Online" : "Offline"}</h1>
     </div>
   );
 };
