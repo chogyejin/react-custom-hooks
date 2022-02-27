@@ -111,3 +111,15 @@
 - scroll에 따라 태그의 글자색, 크기 변경하는 hook
 - event handler의 event type은 Type Definition에서 lib.dom.d.ts의 GlobalEventHandlersEventMap을 참고
 - window.scrollX, window.scrollY는 수평, 수직으로 얼마나 scroll 됐는지 보여줌
+
+# useFullscreen
+
+- 원하는 element(img, div ...)를 전체 화면으로 만들거나 다시 축소 시키는 hook
+  - 여기선 HTMLDivElement type 이용
+- 전체 화면은 `element.current`, 돌아가기는 `document`의 함수 실행
+- 브라우저별 대응
+  - Chrome : requestFullscreen, exitFullscreen
+  - Firefox : mozRequestFullScreen, mozCancelFullScreen
+  - IE : msRequestFullscreen, msExitFullscreen
+  - Edge, Safari : webkitRequestFullscreen, webkitExitFullscreen
+- callback 함수로 쓰인 onFull은 현재 상태를 console.log로 출력
