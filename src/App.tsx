@@ -1,18 +1,19 @@
-import { useScroll } from "./hooks/useScroll";
+import { useFullscreen } from "./hooks/useFullscreen";
 
 const App = () => {
-  const { x, y } = useScroll();
+  const onFull = (isFull: boolean) => {
+    console.log(isFull ? "Now Full" : "Now No Full");
+  };
+  const { element, triggerFull, exitFull } = useFullscreen(onFull);
   return (
-    <div style={{ height: "1000vh", width: "1000vw" }}>
-      <h1
-        style={{
-          position: "fixed",
-          color: y > 100 ? "red" : "blue",
-          fontSize: x > 100 ? "100px" : "",
-        }}
-      >
-        Hi
-      </h1>
+    <div>
+      <div ref={element}>
+        <img src="https://i.ibb.co/R6RwNxx/grape.jpg" />
+        <button onClick={exitFull}>Exit</button>
+      </div>
+      <div>
+        <button onClick={triggerFull}>Full</button>
+      </div>
     </div>
   );
 };
