@@ -1,19 +1,14 @@
-import { useFullscreen } from "./hooks/useFullscreen";
+import { useNotification } from "./hooks/useNotification";
 
 const App = () => {
-  const onFull = (isFull: boolean) => {
-    console.log(isFull ? "Now Full" : "Now No Full");
+  const title = "안녕하세요";
+  const options = {
+    body: "반갑습니다",
   };
-  const { element, triggerFull, exitFull } = useFullscreen(onFull);
+  const onNotify = useNotification(title, options);
   return (
     <div>
-      <div ref={element}>
-        <img src="https://i.ibb.co/R6RwNxx/grape.jpg" />
-        <button onClick={exitFull}>Exit</button>
-      </div>
-      <div>
-        <button onClick={triggerFull}>Full</button>
-      </div>
+      <button onClick={onNotify}>Button</button>{" "}
     </div>
   );
 };
