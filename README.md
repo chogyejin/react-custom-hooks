@@ -123,3 +123,15 @@
   - IE : msRequestFullscreen, msExitFullscreen
   - Edge, Safari : webkitRequestFullscreen, webkitExitFullscreen
 - callback 함수로 쓰인 onFull은 현재 상태를 console.log로 출력
+
+# useNotification
+
+- Notification API 이용하여 알림 보내는 hook, [Notification API MDN](https://developer.mozilla.org/ko/docs/Web/API/notification)
+  - Chrome : 사이트 설정 > 알림 허용
+  - macOS : 시스템 환경설정 > 알림 및 집중모드 > 브라우저 알림 허용
+- `new Notification(title, options)`로 객체 인스턴스를 생성해서 알림 보냄
+  - title 필수, options optional
+- `Notification.permission` : 사용자 알림 상태 denied(거절), granted(허용), default(사용자 선택 알지 못함, 거절)
+  - denied : 묻지도 않고 알림 못 보냄
+  - granted : 바로 알림 보낼 수 있음
+  - default : permission 값 정하는 권한 요청 창 띄움, 허용이면 알림 보내고 차단이면 return, 이후로 권한 유지
