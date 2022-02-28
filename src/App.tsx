@@ -1,14 +1,16 @@
-import { useNotification } from "./hooks/useNotification";
+import useAxios from "./hooks/useAxios";
 
 const App = () => {
-  const title = "안녕하세요";
-  const options = {
-    body: "반갑습니다",
-  };
-  const onNotify = useNotification(title, options);
+  const { loading, error, data, refetch } = useAxios({
+    url: `https://yts.mx/api/v2/list_movies.json`,
+  });
+  console.log(loading, error, JSON.stringify(data));
   return (
     <div>
-      <button onClick={onNotify}>Button</button>{" "}
+      <div>Hi</div>
+      <h1>{data && data.status}</h1>
+      <h2>{loading && "Loading"}</h2>
+      <button onClick={refetch}>Refetch</button>
     </div>
   );
 };
