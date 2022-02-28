@@ -135,3 +135,24 @@
   - denied : 묻지도 않고 알림 못 보냄
   - granted : 바로 알림 보낼 수 있음
   - default : permission 값 정하는 권한 요청 창 띄움, 허용이면 알림 보내고 차단이면 return, 이후로 권한 유지
+
+# useAxios
+
+- axios 라이브러리는 일부분 커스터마이징이 가능하다.
+  - axiosInstance는 기본적으로 defaultAxios를 가짐
+  - useEffect로 axiosInstance에 options을 전달
+    - options의 type은 `AxiosRequestConfig` 참조
+    ```
+    // post 하고 싶다면
+    useAxios({
+      url: requestUrl,
+      method: "post",
+      data: postData,
+    });
+    ```
+- options.url을 조건으로 useEffect를 하려하면 React Hook "useEffect" is called conditionally 에러 발생
+  - useEffect 안으로 return이 있는 조건문 이동
+- data refetch
+  - useAxios에 refetch 함수 선언
+  - refetch 함수는 state를 다시 set(loading flag를 true로)하고 trigger를 랜덤하게 바꿈
+  - useEffect의 deps로 trigger를 넣어서 data 다시 fetch
